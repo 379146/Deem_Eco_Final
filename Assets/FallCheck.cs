@@ -27,19 +27,26 @@ public class FallCheck : MonoBehaviour
             Parent.NumOne--;
             Destroy(collision.gameObject);
         }
-        //if (collision.CompareTag("Pred2"))
-        //{
-        //    Parent.NumTwo--;
-        //    Destroy(collision.gameObject);
-        //}
-        //if (collision.CompareTag("Cat2"))
-        //{
-        //    Parent.NumOne--;
-        //    Destroy(collision.gameObject);
-        //}
-
-
-
+        if (collision.CompareTag("Fox"))
+        {
+            Parent.NumFour--;
+            Destroy(collision.gameObject);
+        }
+        if (collision.CompareTag("Rabbit"))
+        {
+            Parent.NumFive--;
+            Destroy(collision.gameObject);
+        }
+        if (collision.CompareTag("Butterfly"))
+        {
+            Parent.NumSix--;
+            Destroy(collision.gameObject);
+        }
+        if (collision.CompareTag("Turtle"))
+        {
+            Parent.NumSeven--;
+            Destroy(collision.gameObject);
+        }    
     }
 
 }

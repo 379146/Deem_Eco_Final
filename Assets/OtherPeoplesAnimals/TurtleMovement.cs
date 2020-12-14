@@ -14,7 +14,7 @@ public class TurtleMovement : MonoBehaviour
     public int minPosZ;
     //set the gameobject
 
-    public GameObject turtleGo;
+    //public GameObject turtleGo;
     public bool turtleDestroy = false;
     Rigidbody body;
   
@@ -27,19 +27,11 @@ public class TurtleMovement : MonoBehaviour
     {
         //give the object gravity
         body = GetComponent<Rigidbody>();
-        Renderer turtleColor = turtleGo.GetComponent<Renderer>();
-        turtleColor.material = new Material(Shader.Find("Diffuse"));
-        turtleColor.material.color = Color.green;
-        body.isKinematic = false;
-        body.useGravity = true;
-        //body.position = new Vector3(22f, 10.5f, 30f);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        // CheckEdges();
-
         if (body.position.y <= 0 && turtleDestroy == false)
         {
 
@@ -66,56 +58,56 @@ public class TurtleMovement : MonoBehaviour
 
 
 
-        if ((body.position.x <= maxPosX) || (body.position.z <= maxPosZ))
-        {
-            float x = body.position.x - .04f; //* Time.deltaTime;
-            float y = body.position.y + .02f; //* Time.deltaTime;
-            float z = body.position.z - .04f; // * Time.deltaTime;
-            body.position = new Vector3(x, y, z);
-            Debug.Log("Is hitting max border");
+        //if ((body.position.x <= maxPosX) || (body.position.z <= maxPosZ))
+        //{
+        //    float x = body.position.x - .04f; //* Time.deltaTime;
+        //    float y = body.position.y + .02f; //* Time.deltaTime;
+        //    float z = body.position.z - .04f; // * Time.deltaTime;
+        //    body.position = new Vector3(x, y, z);
+        //    Debug.Log("Is hitting max border");
 
 
-        }
+        //}
 
-        else if ((body.position.x <= minPosX) || (body.position.z <= minPosZ))
-        {
-            float x = body.position.x + .04f; //* Time.deltaTime;
-            float y = body.position.y + .02f; //* Time.deltaTime;
-            float z = body.position.z + .04f; // * Time.deltaTime;
-            body.position = new Vector3(x, y, z);
-            Debug.Log("Is hitting min border");
+        //else if ((body.position.x <= minPosX) || (body.position.z <= minPosZ))
+        //{
+        //    float x = body.position.x + .04f; //* Time.deltaTime;
+        //    float y = body.position.y + .02f; //* Time.deltaTime;
+        //    float z = body.position.z + .04f; // * Time.deltaTime;
+        //    body.position = new Vector3(x, y, z);
+        //    Debug.Log("Is hitting min border");
 
-        }
+        //}
 
-        else if ((body.position.x <= minPosX) || (body.position.z <= maxPosZ))
-        {
-            float x = body.position.x + .04f; //* Time.deltaTime;
-            float y = body.position.y + .02f; //* Time.deltaTime;
-            float z = body.position.z - .04f; // * Time.deltaTime;
-            body.position = new Vector3(x, y, z);
+        //else if ((body.position.x <= minPosX) || (body.position.z <= maxPosZ))
+        //{
+        //    float x = body.position.x + .04f; //* Time.deltaTime;
+        //    float y = body.position.y + .02f; //* Time.deltaTime;
+        //    float z = body.position.z - .04f; // * Time.deltaTime;
+        //    body.position = new Vector3(x, y, z);
 
-        }
+        //}
 
-        else if ((body.position.z <= minPosZ) || (body.position.x <= maxPosX))
-        {
-            float x = body.position.x - .04f; //* Time.deltaTime;
-            float y = body.position.y + .02f; //* Time.deltaTime;
-            float z = body.position.z + .04f; // * Time.deltaTime;
-            body.position = new Vector3(x, y, z);
+        //else if ((body.position.z <= minPosZ) || (body.position.x <= maxPosX))
+        //{
+        //    float x = body.position.x - .04f; //* Time.deltaTime;
+        //    float y = body.position.y + .02f; //* Time.deltaTime;
+        //    float z = body.position.z + .04f; // * Time.deltaTime;
+        //    body.position = new Vector3(x, y, z);
 
-        }
+        //}
 
 
 
-        else
-        {
+        //else
+        //{
             float x = body.position.x - .04f; //* Time.deltaTime;
             float y = body.position.y + .02f; //* Time.deltaTime;
             float z = body.position.z - .04f; // * Time.deltaTime;
 
             body.position = new Vector3(x, y, z);
             Debug.Log("Just Moving");
-        }
+        //}
 
     }
 

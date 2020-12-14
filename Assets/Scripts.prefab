@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8006451881911089949}
   m_Layer: 0
   m_Name: Scripts
-  m_TagString: Untagged
+  m_TagString: Script
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,8 +83,25 @@ MonoBehaviour:
   animalThreeTotal: 2
   NumThree: 0
   fourthAnimal: []
-  animalfour: {fileID: 0}
-  animalFourTotal: 0
+  animalFour: {fileID: 4718685249246488240, guid: 70cba0f8cecf00649a0e54257a91554b,
+    type: 3}
+  animalFourTotal: 1
+  NumFour: 0
+  fifthAnimal: []
+  animalFive: {fileID: 244084867050258931, guid: ce6485ee1432119468563288cc484579,
+    type: 3}
+  animalFiveTotal: 1
+  NumFive: 0
+  sixthAnimal: []
+  animalSix: {fileID: 838963787435610520, guid: 8681d10bf4d9a1b429ee157c5eff55cc,
+    type: 3}
+  animalSixTotal: 5
+  NumSix: 0
+  seventhAnimal: []
+  animalSeven: {fileID: 4388827195379687353, guid: 8614ba9243bbf084290c6ba6a59b5388,
+    type: 3}
+  animalSevenTotal: 2
+  NumSeven: 0
   terrain: {fileID: 8006451881911089947}
 --- !u!1 &8006451883487098424
 GameObject:

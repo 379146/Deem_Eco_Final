@@ -6,21 +6,24 @@ public class NewFox : MonoBehaviour
 {
     public bool timeRunning = false;
     public float timeLeft = 5f;
-    private bool jumpCool = false;
+    public bool jumpCool = false;
 
-    private AnimalEngine engine;
+    private createAnimals engine;
 
-    private float speed = 5f; //Change this to adjust speed of the fox
+    public float speed = 5f; //Change this to adjust speed of the fox
     private Rigidbody body;
-    private GameObject rabbit;
-    private GameObject engineG;
+    public GameObject rabbit;
+    public GameObject engineG;
+
+    Vector3 lookDirection;
+
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody>(); //Add a rigidbody to the fox in the inspector
         rabbit = GameObject.FindGameObjectWithTag("Rabbit"); //On your rabbit GameObject, be sure to also add a "Rabbit" tag
         engineG = GameObject.FindGameObjectWithTag("Script"); //On your Animal Spawner Script, be sure to add a "Script" tag
-        engine = engineG.GetComponent<AnimalEngine>(); //This is required to grab your spawner's script and use its methods
+        engine = engineG.GetComponent<createAnimals>(); //This is required to grab your spawner's script and use its methods
     }
 
     // Update is called once per frame
@@ -28,7 +31,7 @@ public class NewFox : MonoBehaviour
     {
         //Looks at the rabbit where it is in the ecosystem
         transform.LookAt(rabbit.transform);
-        Vector3 lookDirection = ( rabbit.transform.position - transform.position);
+        lookDirection = ( rabbit.transform.position - transform.position);
 
         //Applies force to the fox to move towards the rabbit
         body.AddForce(lookDirection * speed);
@@ -38,23 +41,29 @@ public class NewFox : MonoBehaviour
         //If the fox is close enough, the rabbit is placed somewhere else and the fox will "eat" the rabbit
         if (dist <= 1)
         {
-            engine.NewSpawn(rabbit); //Method added to Animal Engine spawner, used to respawn rabbit
+            //Method added to Animal Engine spawner, used to respawn rabbit////////////////////////************************
+            Destroy(rabbit.gameObject);
+            engine.NumFive--;
             timeRunning = true;
         }
         //If the fox gets a rabbit, they will stop for 5 seconds
         if (timeRunning == true)
         {
-            if (timeLeft > 0)
-            {
-                body.velocity = new Vector3(0, 0, 0);
-                timeLeft -= Time.deltaTime;
-            }
-            else
-            {
-                timeLeft = 5f; //Time reset to 5 seconds
-                timeRunning = false;
-                body.AddForce(lookDirection * speed);
-            }
+
+            Invoke("thing", 5f);
+
+            //if (timeLeft > 0)
+            //{
+            //    body.velocity = new Vector3(0, 0, 0);
+            //    timeLeft -= 0.1f;
+            //}
+            //else
+            //{
+            //    timeLeft = 5f; //Time reset to 5 seconds
+            //    timeRunning = false;
+            //    rabbit = GameObject.FindGameObjectWithTag("Rabbit");
+            //    body.AddForce(lookDirection * speed);
+            //}
         }
         //If this is true, a countdown starts for the fox to jump
         if (jumpCool == false)
@@ -63,6 +72,19 @@ public class NewFox : MonoBehaviour
             jumpCool = true;
         }
     }
+
+
+    void thing()
+    {
+
+        timeLeft = 5f; //Time reset to 5 seconds
+        timeRunning = false;
+        rabbit = GameObject.FindGameObjectWithTag("Rabbit");
+        body.AddForce(lookDirection * speed);
+
+    }
+
+
     //Makes the fox "jump"
     IEnumerator JumpCounter()
     {

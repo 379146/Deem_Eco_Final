@@ -8,14 +8,8 @@ public class Bunny : MonoBehaviour
     private bool jumpCool = false;
     private void Start()
     {
-        Renderer renderer = GetComponent<Renderer>();
         body = GetComponent<Rigidbody>();
-        GetComponent<BoxCollider>().enabled = true;
         body.mass = 50;
-
-        //Set material for rabbit
-        renderer.material = new Material(Shader.Find("Diffuse"));
-        renderer.material.color = Color.red;
     }
     private void Update()
     {
